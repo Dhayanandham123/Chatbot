@@ -1,0 +1,23 @@
+[
+    {
+      "title": "Python for Beginners",
+      "skills": ["python", "programming", "basics"],
+      "career": ["software developer", "data analyst"]
+    },
+    {
+      "title": "Data Science Fundamentals",
+      "skills": ["data analysis", "python", "math"],
+      "career": ["data scientist", "machine learning engineer"]
+    },
+    {
+      "title": "Web Development Bootcamp",
+      "skills": ["html", "css", "javascript", "web"],
+      "career": ["frontend developer", "web developer"]
+    },
+    {
+      "title": "Machine Learning Basics",
+      "skills": ["ml", "data", "python"],
+      "career": ["machine learning engineer", "ai engineer"]
+    }
+  ]
+  

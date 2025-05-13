@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>E-learning Course Advisor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="chat-container">
+        <h2>📚 E-learning Course Advisor Bot</h2>
+        <div id="chatbox"></div>
+        <input type="text" id="userInput" placeholder="Enter your goal, skills, or type 'progress' / 'done: course title'">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        function sendMessage() {
+            let userInput = document.getElementById("userInput");
+            let message = userInput.value.trim();
+            if (message === "") return;
+
+            let chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += `<div class='user-msg'>👤 You: ${message}</div>`;
+            userInput.value = "";
+
+            fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message: message })
+            })
+            .then(response => response.json())
+            .then(data => {
+                chatbox.innerHTML += `<div class='bot-msg'>🤖 Bot: ${data.response.replace(/\n/g, "<br>")}</div>`;
+                chatbox.scrollTop = chatbox.scrollHeight;
+            });
+        }
+
+        document.getElementById("userInput").addEventListener("keydown", function(e) {
+            if (e.key === "Enter") sendMessage();
+        });
+    </script>
+</body>
+</html>
